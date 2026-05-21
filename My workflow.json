@@ -1,0 +1,133 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f3c97d01-5079-4112-9aa8-a5c2f385efa5",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3d4a2b90-f392-4334-8732-44c188122ced",
+              "name": "username",
+              "value": "Sneha",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        0
+      ],
+      "id": "3e358f9f-fba4-401f-9e7c-9ca44e2ebbec",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "945b1e86-a745-42bc-904c-6913c4d71d1e",
+              "name": "message",
+              "value": "=Welcome {{ $json.username}}, Welcome to AI Automation course.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        0
+      ],
+      "id": "0b959efa-668a-4a68-a4c1-ae49f4542244",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "sendTo": "kamasanisneha1122@gmail.com",
+        "subject": "Test from n8n",
+        "message": "Hello Sneha, this email was sent automatically from n8n.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        0
+      ],
+      "id": "607ee743-445d-4873-814e-ffb2c1db1151",
+      "name": "Send a message",
+      "webhookId": "414b8764-2961-4586-934e-9b7bc59c50de",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gK5iI9DQtylI257V",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "5bfae0e0-a5e3-4861-b1ad-754cbc5e6b06",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bb259af4a9bf83738ab3c0d00d561f861368ca5007c1c914ba7768c2516d55e1"
+  },
+  "id": "Hx3JkCuqDvre8z7R",
+  "tags": []
+}
